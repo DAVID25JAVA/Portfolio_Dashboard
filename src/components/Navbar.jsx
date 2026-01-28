@@ -7,10 +7,20 @@ function Navbar() {
   const { theme, toggleTheme } = useTheme();
 
   return (
-    <div className={`${theme == "light" ? "bg-white transition-all duration-500 " : "bg-gray-900 transition-all duration-500"}`}>
+    <div
+      className={`${
+        theme == "light"
+          ? "bg-white transition-all duration-500 "
+          : "bg-gray-950 transition-all duration-500"
+      }`}
+    >
       <div className="flex items-center justify-between px-4 md:px-8 border-b border-gray-300 py-3">
         <Link href="/">
-          <span className={`font-bold text-lg sm:text-xl ${theme=='light'?"text-gray-700":"text-gray-100"}`}>
+          <span
+            className={`font-bold text-lg sm:text-xl ${
+              theme == "light" ? "text-gray-700" : "text-gray-100"
+            }`}
+          >
             David.dev
           </span>
         </Link>
