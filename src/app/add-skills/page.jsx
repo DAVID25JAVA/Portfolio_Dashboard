@@ -3,7 +3,7 @@ import React from 'react'
 
 export default function page() {
   return (
-    <div className="p-8 bg-white min-h-full">
+    <div className="p-4 sm:p-8 bg-white min-h-full">
 
       {/* Page Header */}
       <div className="mb-8 pb-6 border-b border-gray-200">
@@ -99,7 +99,7 @@ export default function page() {
             </div>
           </div>
 
-          <div className="p-5">
+          <div className="p-2 sm:p-5">
             <div className="flex items-center gap-4">
               <button className="w-10 h-10 rounded-lg border border-gray-300 flex items-center justify-center text-gray-600 hover:bg-gray-100 hover:border-gray-400 transition-all text-lg font-light shrink-0">
                 −
@@ -107,19 +107,19 @@ export default function page() {
               <div className="flex-1 relative">
                 <input
                   type="number"
-                  defaultValue="3"
+                  defaultValue="0"
                   min="0"
                   max="50"
                   className="w-full px-3.5 py-2.5 text-sm border border-gray-300 rounded-lg bg-white outline-none focus:ring-2 focus:ring-gray-200 focus:border-gray-400 transition-all text-center text-gray-700 font-medium"
                 />
-                <span className="absolute right-3.5 top-1/2 -translate-y-1/2 text-xs text-gray-400 pointer-events-none">
+                <span className=" hidden sm:block absolute right-3.5 top-1/2 -translate-y-1/2 text-xs text-gray-400 pointer-events-none">
                   yrs
                 </span>
               </div>
               <button className="w-10 h-10 rounded-lg border border-gray-300 flex items-center justify-center text-gray-600 hover:bg-gray-100 hover:border-gray-400 transition-all text-lg font-light shrink-0">
                 +
               </button>
-              <button className="px-5 py-2.5 bg-gray-800 text-white text-sm font-medium rounded-lg hover:bg-gray-700 transition-colors shrink-0">
+              <button className="px-4 sm:px-5  py-2 sm:py-2.5 bg-gray-800 text-white text-sm font-medium rounded-lg hover:bg-gray-700 transition-colors shrink-0">
                 Save
               </button>
             </div>
@@ -158,18 +158,18 @@ export default function page() {
               <div className="flex-1 relative">
                 <input
                   type="number"
-                  defaultValue="24"
+                  defaultValue="0"
                   min="0"
                   className="w-full px-3.5 py-2.5 text-sm border border-gray-300 rounded-lg bg-white outline-none focus:ring-2 focus:ring-gray-200 focus:border-gray-400 transition-all text-center text-gray-700 font-medium"
                 />
-                <span className="absolute right-3.5 top-1/2 -translate-y-1/2 text-xs text-gray-400 pointer-events-none">
+                <span className="hidden sm:block absolute right-3.5 top-1/2 -translate-y-1/2 text-xs text-gray-400 pointer-events-none">
                   total
                 </span>
               </div>
               <button className="w-10 h-10 rounded-lg border border-gray-300 flex items-center justify-center text-gray-600 hover:bg-gray-100 hover:border-gray-400 transition-all text-lg font-light shrink-0">
                 +
               </button>
-              <button className="px-5 py-2.5 bg-gray-800 text-white text-sm font-medium rounded-lg hover:bg-gray-700 transition-colors shrink-0">
+              <button className="px-4 sm:px-5  py-2 sm:py-2.5 bg-gray-800 text-white text-sm font-medium rounded-lg hover:bg-gray-700 transition-colors shrink-0">
                 Save
               </button>
             </div>

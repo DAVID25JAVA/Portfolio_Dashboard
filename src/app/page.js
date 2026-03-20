@@ -14,34 +14,34 @@ export default function Home() {
             Here's an overview of your portfolio
           </p>
         </div>
-        <div className="flex items-center gap-2">
+        <div className=" hidden sm:flex items-center gap-2">
           <div className="w-2 h-2 rounded-full bg-green-400"></div>
           <span className="text-xs text-gray-400">Portfolio live</span>
         </div>
       </div>
 
       {/* ── STAT CARDS ── */}
-      <div className="grid grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
         {stats.map((s) => (
           <div
             key={s.label}
             className="border border-gray-200 rounded-xl p-5 hover:bg-gray-50 transition-colors group"
           >
-            <div className="flex items-center justify-between mb-4">
+            <div className="flex items-center justify-center md:justify-between mb-4">
               <div
                 className={`w-9 h-9 rounded-lg ${s.bg} border ${s.border} flex items-center justify-center ${s.color}`}
               >
                 {s.icon}
               </div>
             </div>
-            <p className="text-3xl font-bold text-gray-800">{s.value}</p>
-            <p className="text-xs text-gray-400 mt-1">{s.label}</p>
+            <p className="text-3xl font-bold text-gray-800 text-center md:text-start">{s.value}</p>
+            <p className="text-xs text-gray-400 mt-1 text-center md:text-start">{s.label}</p>
           </div>
         ))}
       </div>
 
       {/* ── SKILLS + PROJECTS GRID ── */}
-      <div className="grid grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
         {/* ── SKILLS IN EXPERTISE ── */}
         <div className="border border-gray-200 rounded-xl overflow-hidden">
           <div className="flex items-center justify-between px-5 py-4 border-b border-gray-100 bg-gray-50">

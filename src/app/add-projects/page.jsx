@@ -15,7 +15,7 @@ function page() {
             Fill in the details to showcase your work
           </p>
         </div>
-        <div className="flex items-center gap-3">
+        <div className="hidden sm:flex items-center gap-3">
           <button className="px-4 py-2 text-sm text-gray-600 border border-gray-300 rounded-lg hover:bg-gray-100 transition-colors">
             Cancel
           </button>
@@ -26,8 +26,8 @@ function page() {
       </div>
 
       {/* Body */}
-      <div className="max-w-5xl mx-auto px-8 py-8">
-        <div className="grid grid-cols-3 gap-8">
+      <div className="sm:max-w-5xl sm:mx-auto w-full px-3 sm:px-8 py-8">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
           {/* ── LEFT COLUMN ── */}
           <div className="col-span-1 space-y-6">
             {/* Image Upload */}
@@ -131,7 +131,7 @@ function page() {
           {/* ── RIGHT COLUMN ── */}
           <div className="col-span-2 space-y-5">
             {/* Title + Name */}
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1.5">
                   Project Title <span className="text-red-400">*</span>
@@ -179,14 +179,14 @@ function page() {
                     <div className="w-7 h-7 rounded-md bg-gray-100 flex items-center justify-center">
                       <ExternalLink size={15} />
                     </div>
-                    <span className="text-xs font-medium text-gray-500 w-14">
+                    <span className="text-xs font-medium text-gray-500 sm:w-14 w-full">
                       Live URL
                     </span>
                   </div>
                   <div className="w-px h-4 bg-gray-200 shrink-0" />
                   <input
                     type="text"
-                    placeholder="https://your-project.vercel.app"
+                    placeholder="Enter URL"
                     className="flex-1 text-sm bg-transparent outline-none placeholder-gray-300 text-gray-700"
                   />
                 </div>
@@ -197,14 +197,14 @@ function page() {
                     <div className="w-7 h-7 rounded-md bg-gray-100 flex items-center justify-center">
                       <Github size={15} />
                     </div>
-                    <span className="text-xs font-medium text-gray-500 w-14">
+                    <span className="text-xs font-medium text-gray-500 sm:w-14 w-full">
                       GitHub
                     </span>
                   </div>
                   <div className="w-px h-4 bg-gray-200 shrink-0" />
                   <input
                     type="text"
-                    placeholder="https://github.com/username/repo"
+                    placeholder="Enter URL"
                     className="flex-1 text-sm bg-transparent outline-none placeholder-gray-300 text-gray-700"
                   />
                 </div>

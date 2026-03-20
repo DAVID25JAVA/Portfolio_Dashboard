@@ -1,9 +1,9 @@
-import React from "react";
-import { fields } from "../../../public/assets";
+ import React from "react";
+ import { fields } from "../../../public/assets";
 
 export default function page() {
   return (
-    <div className="p-8 bg-white min-h-full">
+    <div className="sm:p-8 p-4 bg-white min-h-full">
       {/* Page Header */}
       <div className="mb-8 pb-6 border-b border-gray-200">
         <h1 className="text-xl font-semibold text-gray-800">
@@ -36,13 +36,13 @@ export default function page() {
             </div>
 
             {/* Input + Save */}
-            <div className="p-4 flex items-center gap-3">
+            <div className="p-4 flex flex-col sm:flex-row items-end sm:items-center gap-3">
               <input
                 type="text"
                 placeholder={field.placeholder}
                 className="flex-1 px-3.5 py-2.5 text-sm border border-gray-300 rounded-lg bg-white outline-none focus:ring-2 focus:ring-gray-200 focus:border-gray-400 transition-all placeholder-gray-300 text-gray-700"
               />
-              <button className="px-4 py-2.5 bg-gray-800 text-white text-sm font-medium rounded-lg hover:bg-gray-700 transition-colors shrink-0">
+              <button className="px-3 sm:px-4 py-1.5 sm:py-2.5 bg-gray-800 text-white text-sm font-medium rounded-lg hover:bg-gray-700 transition-colors shrink-0">
                 Save
               </button>
             </div>
@@ -52,7 +52,7 @@ export default function page() {
         {/* Footer */}
         <div className="flex items-center justify-between pt-2 border-t border-gray-100">
           <p className="text-xs text-gray-400">All fields are optional</p>
-          <button className="px-6 py-2.5 bg-gray-800 text-white text-sm font-medium rounded-lg hover:bg-gray-700 transition-colors">
+          <button className="px-4 sm:px-6  py-2 sm:py-2.5 bg-gray-800 text-white text-sm font-medium rounded-lg hover:bg-gray-700 transition-colors">
             Save All Changes
           </button>
         </div>
