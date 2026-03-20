@@ -1,7 +1,6 @@
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Sidebar from "@/components/Sidebar";
-import { ThemeProvider } from "@/context/themeContext";
 
 export const metadata = {
   title: "Portfolio-Dashboard",
@@ -12,17 +11,15 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`antialiased`}>
-        <ThemeProvider>
+        <div>
           <div>
-            <div>
-              <Navbar />
-            </div>
-            <div>
-              <Sidebar />
-            </div>
-            <main>{children}</main>
+            <Navbar />
           </div>
-        </ThemeProvider>
+          <div>
+            <Sidebar />
+          </div>
+          <main>{children}</main>
+        </div>
       </body>
     </html>
   );

@@ -1,13 +1,8 @@
-'use client'
-import React from 'react'
-import { useTheme } from '@/context/themeContext'
+"use client";
+import React from "react";
 
 function page() {
-  const { theme } = useTheme();
-
-  return (
-    <div className={`w-full ${theme=="light"?"bg-white":"bg-gray-950 "}`}>page</div>
-  )
+  return <div className={`w-full`}>page</div>;
 }
 
-export default page
+export default page;
