@@ -10,15 +10,28 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`antialiased`}>
-        <div>
-          <div>
+      <body className="antialiased">
+        <div className="flex flex-col h-screen overflow-hidden">
+
+          {/* Navbar — fixed at top */}
+          <div className="shrink-0">
             <Navbar />
           </div>
-          <div>
-            <Sidebar />
+
+          {/* Below navbar: sidebar + content side by side */}
+          <div className="flex flex-1 overflow-hidden">
+
+            {/* Sidebar — fixed, never re-renders */}
+            <div className="shrink-0">
+              <Sidebar />
+            </div>
+
+            {/* Main content — only this scrolls and updates */}
+            <main className="flex-1 overflow-y-auto">
+              {children}
+            </main>
+
           </div>
-          <main>{children}</main>
         </div>
       </body>
     </html>

@@ -1,4 +1,5 @@
 import {
+  BookUser,
   Dribbble,
   FolderCode,
   FolderOpenDot,
@@ -10,4 +11,5 @@ export const sidebarLinks = [
   { name: "Add Projects", path: "/add-projects", icon: <FolderOpenDot /> },
   { name: "Social Media", path: "/social-media", icon: <Dribbble /> },
   { name: "Add Skills", path: "/add-skills", icon: <FolderCode /> },
+  { name: "About", path: "/about", icon: <BookUser /> },
 ];
