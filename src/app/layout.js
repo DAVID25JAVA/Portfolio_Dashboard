@@ -1,6 +1,9 @@
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Sidebar from "@/components/Sidebar";
+import { ReduxProvider } from "@/store/reduxProvide";
+import { Toaster } from "react-hot-toast";
+
 
 export const metadata = {
   title: "Portfolio-Dashboard",
@@ -11,28 +14,26 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className="antialiased">
-        <div className="flex flex-col h-screen overflow-hidden">
-
-          {/* Navbar — fixed at top */}
-          <div className="shrink-0">
-            <Navbar />
-          </div>
-
-          {/* Below navbar: sidebar + content side by side */}
-          <div className="flex flex-1 overflow-hidden">
-
-            {/* Sidebar — fixed, never re-renders */}
+        <Toaster/>
+        <ReduxProvider>
+          <div className="flex flex-col h-screen overflow-hidden">
+            {/* Navbar — fixed at top */}
             <div className="shrink-0">
-              <Sidebar />
+              <Navbar />
             </div>
 
-            {/* Main content — only this scrolls and updates */}
-            <main className="flex-1 overflow-y-auto">
-              {children}
-            </main>
+            {/* Below navbar: sidebar + content side by side */}
+            <div className="flex flex-1 overflow-hidden">
+              {/* Sidebar — fixed, never re-renders */}
+              <div className="shrink-0">
+                <Sidebar />
+              </div>
 
+              {/* Main content — only this scrolls and updates */}
+              <main className="flex-1 overflow-y-auto">{children}</main>
+            </div>
           </div>
-        </div>
+        </ReduxProvider>
       </body>
     </html>
   );
