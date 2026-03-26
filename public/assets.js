@@ -97,7 +97,8 @@ export const projects = [
 
 export const fields = [
   {
-    key: "linkedin",
+    key: "linkedIn",
+    type: "text",
     label: "LinkedIn",
     placeholder: "https://linkedin.com/in/your-profile",
     hint: "Your LinkedIn profile URL",
@@ -108,6 +109,7 @@ export const fields = [
   },
   {
     key: "github",
+    type: "text",
     label: "GitHub",
     placeholder: "https://github.com/your-username",
     hint: "Your GitHub profile URL",
@@ -118,6 +120,7 @@ export const fields = [
   },
   {
     key: "email",
+    type: "email",
     label: "Email",
     placeholder: "you@example.com",
     hint: "Your professional email address",
@@ -127,7 +130,8 @@ export const fields = [
     border: "border-red-100",
   },
   {
-    key: "phone",
+    key: "number",
+    type: "number",
     label: "Phone Number",
     placeholder: "+91 98765 43210",
     hint: "Your contact number",
@@ -138,6 +142,7 @@ export const fields = [
   },
   {
     key: "resume",
+    type: "text",
     label: "Resume Link",
     placeholder: "https://drive.google.com/your-resume",
     hint: "Google Drive, Notion, or any public URL",
@@ -148,6 +153,7 @@ export const fields = [
   },
   {
     key: "address",
+    type: "text",
     label: "Address",
     placeholder: "e.g. New Delhi, India",
     hint: "City, Country or full address",
