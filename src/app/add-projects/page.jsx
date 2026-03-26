@@ -1,6 +1,5 @@
 "use client";
 import API from "@/API/API";
-import Loading from "@/components/UI/Loading";
 import { setLoading, setProjectData, setError } from "@/features/projectSlice";
 import { ExternalLink, Github, Image, Search, X } from "lucide-react";
 import React, { useState } from "react";
@@ -35,49 +34,117 @@ function page() {
     setTechInput("");
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const formData = new FormData();
-    formData.append("name", project.name);
-    formData.append("title", project.title);
-    formData.append("desc", project.desc);
-    formData.append("images", project?.images);
-    formData.append("liveLink", project.liveLink);
-    formData.append("githubLink", project.githubLink);
-    formData.append("techStack", project.techStack);
+  const handleImageChange = (e) => {
+    const files = Array.from(e.target.files);
 
-    if (Object.keys(formData).length === 0) {
-      toast.error("Please Enter Form Data");
-      return;
-    }
-    try {
-      dispatch(setLoading(true));
-      const res = await API({
-        method: "POST",
-        url: "/project/create",
-        data: formData,
-      });
-      if (res.success) {
-        dispatch(setProjectData(res?.project));
-        setProject({
-          name: "",
-          title: "",
-          desc: "",
-          images: "",
-          liveLink: "",
-          githubLink: "",
-          techStack: "",
-        });
-        dispatch(setLoading(false));
-      }
-    } catch (error) {
-      console.log("Create project error--->", error.message);
-      dispatch(setError(error.message));
-      dispatch(setLoading(false));
-    } finally {
-      dispatch(setLoading(false));
-    }
+    setProject((prev) => ({
+      ...prev,
+      images: [...prev.images, ...files],
+    }));
   };
+
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   const formData = new FormData();
+  //   formData.append("name", project.name);
+  //   formData.append("title", project.title);
+  //   formData.append("desc", project.desc);
+  //   // formData.append("images", project?.images);
+  //   project.images.forEach((img) => {
+  //     formData.append("images", img);
+  //   });
+  //   formData.append("liveLink", project.liveLink);
+  //   formData.append("githubLink", project.githubLink);
+  //   formData.append("techStack", project.techStack);
+
+  //   if (Object.keys(formData).length === 0) {
+  //     toast.error("Please Enter Form Data");
+  //     return;
+  //   }
+  //   try {
+  //     dispatch(setLoading(true));
+  //     const res = await API({
+  //       method: "POST",
+  //       url: "/project/create",
+  //       data: formData,
+  //     });
+  //     if (res.success) {
+  //       dispatch(setProjectData(res?.project));
+  //       setProject({
+  //         name: "",
+  //         title: "",
+  //         desc: "",
+  //         images: "",
+  //         liveLink: "",
+  //         githubLink: "",
+  //         techStack: "",
+  //       });
+  //       dispatch(setLoading(false));
+  //     }
+  //   } catch (error) {
+  //     console.log("Create project error--->", error.message);
+  //     dispatch(setError(error.message));
+  //     dispatch(setLoading(false));
+  //   } finally {
+  //     dispatch(setLoading(false));
+  //   }
+  // };
+
+  const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  if (
+    !project.name ||
+    !project.title ||
+    !project.desc ||
+    project.images.length === 0
+  ) {
+    toast.error("Please Enter Form Data");
+    return;
+  }
+
+  const formData = new FormData();
+
+  formData.append("name", project.name);
+  formData.append("title", project.title);
+  formData.append("desc", project.desc);
+
+  project.images.forEach((img) => {
+    formData.append("images", img);
+  });
+
+  formData.append("liveLink", project.liveLink);
+  formData.append("githubLink", project.githubLink);
+  formData.append("techStack", JSON.stringify(project.techStack));
+
+  try {
+    dispatch(setLoading(true));
+    const res = await API({
+      method: "POST",
+      url: "/project/create",
+      data: formData,
+    });
+
+    if (res.success) {
+      dispatch(setProjectData(res.project));
+      toast.success(res?.message)
+      setProject({
+        name: "",
+        title: "",
+        desc: "",
+        images: [],
+        liveLink: "",
+        githubLink: "",
+        techStack: [],
+      });
+      dispatch(setLoading(false))
+    }
+  } catch (error) {
+    dispatch(setError(error.message));
+  } finally {
+    dispatch(setLoading(false));
+  }
+};
 
   console.log("Project--->", project);
 
@@ -128,9 +195,8 @@ function page() {
                   {/* File Input (UI only) */}
                   <input
                     type="file"
-                    onChange={(e) =>
-                      setProject({ ...project, images: e.target.files[0] })
-                    }
+                    multiple
+                    onChange={handleImageChange}
                     accept="image/png, image/jpeg, image/webp"
                     className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
                   />
@@ -285,7 +351,7 @@ function page() {
                   type="submit"
                   className={`px-6 py-2.5 outline-none cursor-pointer bg-gray-800 text-white text-sm font-medium rounded-lg hover:bg-gray-700 transition-colors`}
                 >
-                  {error ? <Loader /> : "Publish Project"}
+                  {loading ? <Loader /> : "Publish Project"}
                 </button>
               </div>
             </div>
