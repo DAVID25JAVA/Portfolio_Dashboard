@@ -1,11 +1,12 @@
 "use client";
 import API from "@/API/API";
+import Loader from "@/components/UI/Loading";
 import {
   setSkillData,
   setSkillError,
   setSkillLoading,
 } from "@/features/skillSlice";
-import { BriefcaseBusiness, ClipboardCheck, Lightbulb } from "lucide-react";
+import { BriefcaseBusiness, ClipboardCheck, Lightbulb, X } from "lucide-react";
 import React, { useState } from "react";
 import toast from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
@@ -36,8 +37,6 @@ export default function page() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-     
-
     const payload = {
       skill: skill?.skill,
       exp: skill?.exp,
@@ -67,6 +66,7 @@ export default function page() {
           totalProject: "",
         });
         setTech("");
+        toast.success(res?.message)
       }
     } catch (error) {
       dispatch(setSkillLoading(false));
@@ -118,13 +118,25 @@ export default function page() {
                   placeholder="e.g. React, Figma, Node.js"
                   className="w-full px-3.5 py-2.5 text-sm border border-gray-300 rounded-lg bg-white outline-none focus:ring-2 focus:ring-gray-200 focus:border-gray-400 transition-all placeholder-gray-300 text-gray-700"
                 />
-                <button type="button"
+                <button
+                  type="button"
                   onClick={handleSkill}
                   className=" absolute right-1 bottom-1.5 cursor-pointer p-1 px-6 py-1.5 bg-gray-800 text-white text-sm font-medium rounded-lg hover:bg-gray-700 transition-colors"
                 >
                   Add
                 </button>
               </div>
+              {skill?.skill?.map((i, idx) => (
+                <div
+                  key={idx}
+                  className="border border-gray-200 rounded-md flex justify-between"
+                >
+                  <p className=" text-gray-600 p-2">{i} </p>
+                  <span className="">
+                    <X size={20} className="mt-2 cursor-pointer mr-2" />
+                  </span>
+                </div>
+              ))}
 
               {/* Proficiency */}
               <div>
@@ -261,9 +273,9 @@ export default function page() {
             </p>
             <button
               type="submit"
-              className="px-6 py-2.5 bg-gray-800 text-white text-sm font-medium rounded-lg hover:bg-gray-700 transition-colors"
+              className="px-6 py-2.5 cursor-pointer outline-none bg-gray-800 text-white text-sm font-medium rounded-lg hover:bg-gray-700 transition-colors"
             >
-              Add
+              {skillLoading ? <Loader /> : " Add"}
             </button>
           </div>
         </div>

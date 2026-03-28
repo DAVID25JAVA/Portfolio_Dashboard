@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const backendUri = "https://daviddev-backend.vercel.app/api";
+const backendUri = "https://portfolio-dashboard-backend-4eev.vercel.app/api";
 
 const axiosInstance = axios.create({
   baseURL: backendUri,
